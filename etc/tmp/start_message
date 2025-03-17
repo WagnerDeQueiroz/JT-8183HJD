@@ -1,0 +1,122 @@
+Booting Linux on physical CPU 0x0
+Linux version 4.4.282 (user31@EMB-202204-new-233) (gcc version 5.5.0 (Buildroot 2018.02.7_V1.0.05-g4b04ad0) ) #1 Tue Jul 11 02:49:34 UTC 2023
+CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=0005317f
+CPU: VIVT data cache, VIVT instruction cache
+Machine model: EVB_CBDM_AK3918EV300L_V1.0.0 board
+Memory policy: Data cache writeback
+ANYKA CPU AK3918EV300L (ID 0x535434)
+On node 0 totalpages: 16384
+free_area_init_node: node 0, pgdat c040f970, node_mem_map c3f77000
+  Normal zone: 128 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 16384 pages, LIFO batch:3
+pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+pcpu-alloc: [0] 0 
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: console=ttySAK0,115200n8 root=/dev/mtdblock5 rootfstype=squashfs init=/sbin/init mtdparts=spi0.0:220K@0x0(UBOOT),4K@0x37000(ENV),4K@0x38000(ENVBK),64K@0x39000(DTB),1536K@0x49000(KERNEL),1152K@0x1c9000(ROOTFS),4956K@0x2e9000(APP),256K@0x7c0000(ROM),8192K@0x0(FLASH) mem=64M memsize=64M
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 37804K/65536K available (2930K kernel code, 113K rwdata, 968K rodata, 132K init, 188K bss, 27732K reserved, 0K cma-reserved)
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+    vmalloc : 0xc4800000 - 0xff800000   ( 944 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .text : 0xc0008000 - 0xc03d6c14   (3900 kB)
+      .init : 0xc03d7000 - 0xc03f8000   ( 132 kB)
+      .data : 0xc03f8000 - 0xc0414658   ( 114 kB)
+       .bss : 0xc0414658 - 0xc0443834   ( 189 kB)
+SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+NR_IRQS:124
+ak3918av100_fixed_clk: CPU(JCLK): 888(Mhz) 
+ak3918av100_fixed_clk: DDR2: 444(Mhz) 
+ak3918av100_fixed_clk: PLL2_GCLK: 200(Mhz) 
+threshold: 2.65V ~ 2.86V
+ak-timer: ak_timer_init
+clocksource: ak_cs_timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 159271703898 ns
+sched_clock: 32 bits at 12MHz, resolution 83ns, wraps every 178956970966ns
+Calibrating delay loop... 442.36 BogoMIPS (lpj=2211840)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+CPU: Testing write buffer coherency: ok
+Setting up static identity map for 0x80008400 - 0x8000843c
+devtmpfs: initialized
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+futex hash table entries: 256 (order: -1, 3072 bytes)
+pinctrl core: initialized pinctrl subsystem
+NET: Registered protocol family 16
+DMA: preallocated 16 KiB pool for atomic coherent allocations
+On-chip L2 memory initialized
+ak-pinctrl 20170000.gpio: ak_pinctrl_probe 2322
+ak-pinctrl 20170000.gpio: gpio_base 0xf0170000 gpio_base_pa 0x20170000
+ak_pinctrl_probe irq: 16
+gpiochip_add: registered GPIOs 0 to 104 on device: ak-pinctrl
+media: Linux media interface: v0.10
+Linux video capture interface: v2.00
+clocksource: Switched to clocksource ak_cs_timer
+NET: Registered protocol family 2
+IP idents hash table entries: 2048 (order: 2, 16384 bytes)
+TCP established hash table entries: 1024 (order: 0, 4096 bytes)
+TCP bind hash table entries: 1024 (order: 0, 4096 bytes)
+TCP: Hash tables configured (established 1024 bind 1024)
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+squashfs: version 4.0 (2009/01/31) Phillip Lougher
+jffs2: version 2.2. © 2001-2006 Red Hat, Inc.
+io scheduler noop registered (default)
+soc soc0: Anyka AK3918EV300L None detected
+AKxx uart driver init, (c) 2013 ANYKA
+20130000.uart0: ttySAK0 at MMIO 0x20130000 (irq = 11, base_baud = 12500000) is a AK
+console [ttySAK0] enabled
+201a0000.uart2: ttySAK2 at MMIO 0x201a0000 (irq = 25, base_baud = 12500000) is a AK
+Start to init Anyka SPI Flash...
+init Anyka SPI Nand Flash driver
+SPI0 bus frequency is 66666666 HZ
+enter ak_spi_probe..., hw=c3a0fa10, hw->clk=c3994c60
+spi0 hz is 66000000
+ak spiflash probe enter.
+akspi flash ID: 0x00204017
+spiflash hz is 66000000
+ak-spiflash spi0.0: xm25qh64c (16384 Kbytes)
+9 cmdlinepart partitions found on MTD device spi0.0
+Creating 9 MTD partitions on "spi0.0":
+0x000000000000-0x000000037000 : "UBOOT"
+0x000000037000-0x000000038000 : "ENV"
+0x000000038000-0x000000039000 : "ENVBK"
+0x000000039000-0x000000049000 : "DTB"
+0x000000049000-0x0000001c9000 : "KERNEL"
+0x0000001c9000-0x0000002e9000 : "ROOTFS"
+0x0000002e9000-0x0000007c0000 : "APP"
+0x0000007c0000-0x000000800000 : "ROM"
+0x000000000000-0x000000800000 : "FLASH"
+Init AK SPI Flash finish.
+akspi master SPI0 initialize success, use for PIO mode.
+PPP generic driver version 2.4.2
+PPP BSD Compression module registered
+PPP Deflate Compression module registered
+PPP MPPE Compression module registered
+NET: Registered protocol family 24
+i2c /dev entries driver
+ak_wdt_init: watchdog register...
+NET: Registered protocol family 17
+hctosys: unable to open rtc device (rtc0)
+ak_serial_startup: Not support Hardware flow control
+squashfs: SQUASHFS error: Xattrs in filesystem, these will be ignored
+squashfs: SQUASHFS error: unable to read xattr id index table
+VFS: Mounted root (squashfs filesystem) readonly on device 31:5.
+devtmpfs: mounted
+Freeing unused kernel memory: 132K
+random: init: uninitialized urandom read (4 bytes read, 26 bits of entropy available)
+random: rcS: uninitialized urandom read (4 bytes read, 26 bits of entropy available)
+random: mkdir: uninitialized urandom read (4 bytes read, 26 bits of entropy available)
+random: mount: uninitialized urandom read (4 bytes read, 26 bits of entropy available)
+random: echo: uninitialized urandom read (4 bytes read, 26 bits of entropy available)
+random: mdev: uninitialized urandom read (4 bytes read, 26 bits of entropy available)
+random: mkdir: uninitialized urandom read (4 bytes read, 27 bits of entropy available)
+random: mkdir: uninitialized urandom read (4 bytes read, 27 bits of entropy available)
+random: mkdir: uninitialized urandom read (4 bytes read, 27 bits of entropy available)
+random: mkdir: uninitialized urandom read (4 bytes read, 27 bits of entropy available)

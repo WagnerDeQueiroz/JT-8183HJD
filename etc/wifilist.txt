@@ -1,0 +1,8 @@
+bssid / frequency / signal level / flags / ssid
+5a:8c:d9:e3:16:3b	2412	-32	[WPA2-PSK-CCMP][ESS]	minhocaAtomica 
+94:ea:ea:ef:07:d7	2462	-62	[WPA2-PSK-CCMP][ESS]	VIVOFIBRA-07D9
+54:af:97:a4:77:9f	2447	-55	[WPA2-PSK-CCMP][ESS]	Zeitounian-Labs
+56:af:97:a4:77:9f	2447	-56	[WPA-PSK-CCMP][WPA2-PSK-CCMP][ESS]	
+52:4f:ba:41:7d:dc	2412	-77	[WPA2-PSK-CCMP][ESS]	
+52:4f:ba:61:7d:dc	2412	-78	[WPA2-PSK-CCMP][ESS]	
+18:0d:2c:d6:5e:d0	2437	-82	[WPA2-PSK-CCMP][ESS]	Iracema2024

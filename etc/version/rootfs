@@ -1,0 +1,12 @@
+# rootfs.version
+
+#1:rootfs_version="20210115"(update:NULL)
+#2:rootfs_version="20210203"(update:update uboot version)
+#3:rootfs_version="20210317"(update:optimize min free reserve bytes)
+#4:rootfs_version="20210319"(update:update uboot version)
+#5:rootfs_version="20210412"(update:update recover)
+#6:rootfs_version="20210621"(update:update uboot version)
+
+rootfs_version="6"
+
+rootfs_timestamp="2021-06-21 15:22:56"

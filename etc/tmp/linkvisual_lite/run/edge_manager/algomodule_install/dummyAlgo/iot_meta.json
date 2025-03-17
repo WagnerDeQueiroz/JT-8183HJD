@@ -1,0 +1,24 @@
+{
+	"aliasName":"aiot_person_detect",
+	"algoName":"aiot_person_detect",
+	"company":"Alibaba inc.",
+	"params":{
+		"ModelCompressFormat":"",
+		"thridLic":"",
+		"algoMainLib":"lib/libaiot_person_detect.so",
+		"lic":"8eb3fd0c5b944c0589646c160406319a",
+		"encryptedFile":"model/model_v2.0.0_20230824_sam.wk",
+		"algoType":[
+			"AIOT_ALG_TYPE_DETECT"
+		],
+		"supportImageFormat":[
+			"AIOT_IMAGE_FORMAT_YUV_SEMIPLANAR_420",
+			"AIOT_IMAGE_FORMAT_JPEG"
+		],
+		"model":"model/model_v2.0.0_20230824.mk",
+		"encryptFile":"model/model_v2.0.0_20230824.mk",
+		"supportPhyImageInfer":false,
+		"config":""
+	},
+	"platform":"LINUX_ARMV7"
+}

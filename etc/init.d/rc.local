@@ -1,0 +1,77 @@
+#!/bin/sh
+
+#print kernel error default
+echo 4 > /proc/sys/kernel/printk
+
+# mount jffs2 file-system. 
+/bin/mount -t jffs2 /dev/mtdblock7 /rom
+# note: can't recommend running other app before `mount` command.
+
+mkdir /mnt/ramdisk
+mkdir /mnt/disc1
+/bin/mount -t tmpfs tmpfs /mnt/ramdisk
+
+cp -R /etc/* /mnt/ramdisk
+/bin/mount --bind /mnt/ramdisk/ /etc/
+
+mkdir /mnt/ramdisk/tmp
+/bin/mount --bind /mnt/ramdisk/tmp /tmp
+
+#start syslogd & klogd, log rotated 3 files(200KB) to /var/log/messages
+syslogd -D -n -O /var/log/messages -s 200 -b 3 & # -l prio
+klogd -n & # -c prio
+
+#create ramdisk
+ifconfig lo 127.0.0.1
+
+dmesg > /tmp/start_message
+
+echo "/tmp/core_%e_%p_%t" > /proc/sys/kernel/core_pattern
+#start system service
+
+#tf card
+insmod /lib/modules/mmc_core.ko
+insmod /lib/modules/mmc_block.ko
+insmod /lib/modules/ak_mci.ko
+insmod /lib/modules/exfat.ko
+#echo 1 > /sys/mmc_en/mmc0_card_pwr_en
+
+echo 10 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio10/direction
+RESETKEY=`cat /sys/class/gpio/gpio10/value`
+if [ $RESETKEY -eq "0" ]; then 
+    echo "Detected reset button has been pressed."
+    /etc/init.d/button_upgrade.sh
+    if [ $? -eq 100 ]; then
+        exit
+    fi
+else
+    /etc/init.d/auto_upgrade.sh
+    # upgrade firmware done.
+    if [ $? -eq 100 ]; then
+        exit
+    fi
+fi 
+echo 10 > /sys/class/gpio/unexport
+
+# mount usr file-system. 
+/bin/mount -t squashfs /dev/mtdblock6 /ipc
+/bin/mount --bind /ipc /usr
+
+cp -r /ipc/ /tmp/
+if [ $? -eq 0 -a -e /ipc/ipc ]; then
+    rm -r /tmp/ipc
+    echo 3 > /proc/sys/vm/drop_caches
+    echo 1024 > /proc/sys/vm/min_free_kbytes
+    /ipc/setup.sh
+else
+    echo "ipc error, app mtd maybe error"
+    rm -r /tmp/ipc
+    echo 3 > /proc/sys/vm/drop_caches
+    /etc/init.d/button_upgrade.sh only_firmware
+    if [ $? -ne 100 ]; then
+        echo "No upg.bin.enc"
+    fi
+fi
+
+exit

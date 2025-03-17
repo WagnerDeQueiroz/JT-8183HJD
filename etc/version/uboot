@@ -1,0 +1,10 @@
+# uboot.version
+
+#1:uboot_version="20210108"(update:NULL)
+#2:uboot_version="20210203"(update:support tf card update flash)
+#3:uboot_version="20210319"(update:change uboot from 4-lines to 1-line)
+#4:uboot_version="20210621"(update:support some new flash chips)
+
+uboot_version="4"
+
+uboot_timestamp="2021-06-21 15:22:07"
