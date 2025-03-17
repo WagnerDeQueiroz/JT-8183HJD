@@ -1,0 +1,24 @@
+dd if=/dev/mtdblock0 of=/mnt/disc1/camera03/mtdblock0
+dd if=/dev/mtdblock1 of=/mnt/disc1/camera03/mtdblock1
+dd if=/dev/mtdblock2 of=/mnt/disc1/camera03/mtdblock2
+dd if=/dev/mtdblock3 of=/mnt/disc1/camera03/mtdblock3
+dd if=/dev/mtdblock4 of=/mnt/disc1/camera03/mtdblock4
+dd if=/dev/mtdblock5 of=/mnt/disc1/camera03/mtdblock5
+dd if=/dev/mtdblock6 of=/mnt/disc1/camera03/mtdblock6
+dd if=/dev/mtdblock7 of=/mnt/disc1/camera03/mtdblock7
+dd if=/dev/mtdblock8 of=/mnt/disc1/camera03/mtdblock8
+
+ls /mnt/disc1/camera03/*
+
+mkdir /mnt/disc1/camera03/backup
+cd /mnt/disc1/camera03/backup
+mkdir /mnt/disc1/camera03/backup/rom
+mkdir /mnt/disc1/camera03/backup/ipc
+mkdir /mnt/disc1/camera03/backup/etc
+
+cp -rv /rom/* /mnt/disc1/camera03/backup/rom/
+cp -rv /etc/* /mnt/disc1/camera03/backup/etc/
+cp -rv /ipc/* /mnt/disc1/camera03/backup/ipc/
+
+kill /ipc/ipc
+
